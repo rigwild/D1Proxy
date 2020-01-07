@@ -6,6 +6,7 @@ import fr.aquazus.d1proxy.handlers.*;
 import fr.aquazus.d1proxy.logging.UncaughtExceptionLogger;
 import fr.aquazus.d1proxy.network.ProxyClient;
 import fr.aquazus.d1proxy.network.ProxyClientState;
+import fr.aquazus.d1proxy.network.RpcWebSocketServer;
 import fr.aquazus.d1proxy.plugins.ProxyPluginManager;
 import lombok.Getter;
 import lombok.Synchronized;
@@ -30,7 +31,7 @@ public class Proxy {
     }
 
     @Getter
-    private final String version = "1.11.0";
+    private final String version = "1.12.0";
     @Getter
     private ProxyConfiguration configuration;
     @Getter
@@ -45,6 +46,9 @@ public class Proxy {
     private List<ProxyClient> clients;
     @Getter
     private long startTime;
+
+    public static RpcWebSocketServer rpcServer = new RpcWebSocketServer();
+
 
     private void init() {
         log.info("Initializing D1Proxy...");
@@ -70,6 +74,9 @@ public class Proxy {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> pluginManager.stopPlugins()));
         pluginManager.loadPlugins();
         startServer();
+
+        rpcServer.registerDofusClients(clients);
+        rpcServer.run();
     }
 
     private void registerHandlers() {

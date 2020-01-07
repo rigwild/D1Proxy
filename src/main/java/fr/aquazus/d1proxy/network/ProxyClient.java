@@ -85,7 +85,9 @@ public class ProxyClient {
             if (data == (byte) 0) {
                 String packet = new String(clientStream.toByteArray(), StandardCharsets.UTF_8);
                 clientStream.reset();
-                this.log("--> " + (packet.length() > 1 ? packet.substring(0, packet.length() - 1) : ""));
+                String s = packet.length() > 1 ? packet.substring(0, packet.length() - 1) : "";
+                this.log("--> " + s);
+                Proxy.rpcServer.broadcastSentPacketToWebSocketClients(s);
                 if (server.getChannel().isOpen() && shouldForward(packet, PacketDestination.SERVER)) sendPacket(packet, server);
                 return;
             }
@@ -104,6 +106,7 @@ public class ProxyClient {
                 String packet = new String(gameStream.toByteArray(), StandardCharsets.UTF_8);
                 gameStream.reset();
                 this.log("<-- " + packet);
+                Proxy.rpcServer.broadcastReceivedPacketToWebSocketClients(packet);
                 if (client.getChannel().isOpen() && shouldForward(packet, PacketDestination.CLIENT)) sendPacket(packet, client);
                 return;
             }
