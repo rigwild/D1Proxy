@@ -114,7 +114,6 @@ public class Proxy {
         addCommand("autojoin", new AutojoinCommand(this));
         if (ProxyConfiguration.proxyDebug) addCommand("send", new SendCommand(this));
         if (ProxyConfiguration.proxyDebug) addCommand("receive", new ReceiveCommand(this));
-        if (ProxyConfiguration.proxyDebug) addCommand("server", new ServerCommand(this));
         log.info(commands.size() + " commands registered!");
     }
 
