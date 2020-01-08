@@ -34,7 +34,7 @@ public class RpcWebSocketServer extends WebSocketServer
   @Override
   public void onClose(WebSocket conn, int code, String reason, boolean remote)
   {
-    System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
+    System.out.println("[RPC] Closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
   }
 
   @Override
@@ -71,12 +71,12 @@ public class RpcWebSocketServer extends WebSocketServer
 
   public void broadcastSentPacketToWebSocketClients(String packet)
   {
-    this.broadcast("sniffer_sent "+packet);
+    this.broadcast("sniffer_sent " + packet);
   }
 
   public void broadcastReceivedPacketToWebSocketClients(String packet)
   {
-    this.broadcast("sniffer_received "+packet);
+    this.broadcast("sniffer_received " + packet);
   }
 
   public void broadcastSendToDofusClients(String packet)

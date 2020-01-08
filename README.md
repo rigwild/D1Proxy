@@ -42,6 +42,18 @@
 - Configure the proxy as needed
 - Run the Proxy with Java 11
 
+### Quick start
+
+0. Install Java 11 and add it to your global `PATH` system variables
+0. Download the [latest release](https://github.com/rigwild/D1Proxy-RPC/releases/latest) files
+0. Put the `d1proxy.properties` file in the same directory as the `d1proxy-<version>.jar` file
+0. Go to Dofus Retro game directory, can be accessed from the Ankama Launcher. Look for this file structure (Windows): `C:\Users\<user>\AppData\Local\Ankama\zaap\retro`
+0. Copy your original `config.xml` file to `config.old.xml`
+0. Copy the `config.xml` file you downloaded into this directory
+0. Start Dofus Retro. In the top right-hand corner select `Official-MITM-proxy`
+0. Open a console in the downloaded `d1proxy-<version>.jar` file
+0. Start the proxy `java -Dfile.encoding=UTF-8 -jar d1proxy-<version>.jar`
+
 ---
 
 ## Features
@@ -51,6 +63,7 @@
 - **Community-based** data sniffing
 - **Quality of Life** features to improve players experience
 - A **Plugin system** *(Beta)*
+- WebSockets **RPC server**
 
 ---
 
@@ -82,6 +95,10 @@
 | :---: |
 | [![Aquazus](https://avatars1.githubusercontent.com/u/7611808?v=3&s=200)](https://github.com/Aquazus) |
 | <a href="https://github.com/Aquazus" target="_blank">`github.com/Aquazus`</a> |
+
+
+
+RPC WebSockets server functionality added by [rigwild](https://github.com/Aquazus). See [D1Proxy-RPC-client](https://github.com/rigwild/D1Proxy-RPC-client) for a Node.js RPC client.
 
 ---
 

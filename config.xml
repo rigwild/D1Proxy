@@ -5,8 +5,8 @@
     <rcount value="10"/>
 
     <conf name="En ligne">
-        <connserver name="Officiel" ip="34.251.172.139" port="443" />
-        <connserver name="Officiel-MITM" ip="127.0.0.1" port="4444" />
+        <connserver name="Official" ip="34.251.172.139" port="443" />
+        <connserver name="Official-MITM-proxy" ip="127.0.0.1" port="4444" />
         <dataserver url="data/" type="local" priority="3" />
         <dataserver url="http://dofusretro.cdn.ankama.com/" priority="1" />
     </conf>
