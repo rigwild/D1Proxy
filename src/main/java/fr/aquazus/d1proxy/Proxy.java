@@ -31,7 +31,7 @@ public class Proxy {
     }
 
     @Getter
-    private final String version = "1.12.0";
+    private final String version = "1.12.1";
     @Getter
     private ProxyConfiguration configuration;
     @Getter
